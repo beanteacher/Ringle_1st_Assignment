@@ -36,17 +36,17 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public void createUser(CreateUserRequest createUserRequest) {
-        User user = userRepository.findByUserId(createUserRequest.getUserId());
+    public void createUser(CreateUserRequest request) {
+        User user = userRepository.findByUserId(request.getUserId());
         if(user != null) {
             throw new CustomException(ErrorCodeType.EXIST_USER);
         }
 
         User newUser = User.builder()
-                .userId(createUserRequest.getUserId())
-                .userRole(createUserRequest.getUserRole())
+                .userId(request.getUserId())
+                .userRole(request.getUserRole())
                 .build();
-        newUser.changePasswordEncoder(createUserRequest.getUserPwd());
+        newUser.changePasswordEncoder(request.getUserPwd());
 
         userRepository.save(newUser);
     }
