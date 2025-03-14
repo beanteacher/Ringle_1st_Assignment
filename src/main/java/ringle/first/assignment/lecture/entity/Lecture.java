@@ -24,10 +24,10 @@ public class Lecture {
     private long lectureSeq;
 
     @NotNull
-    private LocalDateTime lectureStartTime;
+    private LocalDateTime lectureTime;
 
     @NotNull
-    private LocalDateTime lectureEndTime;
+    private LectureStatus lectureStatus;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "userSeq")
@@ -42,9 +42,9 @@ public class Lecture {
     private String lectureModDate;
 
     @Builder
-    protected Lecture(LocalDateTime lectureStartTime, LocalDateTime lectureEndTime, User user) {
-        this.lectureStartTime = lectureStartTime;
-        this.lectureEndTime = lectureEndTime;
+    protected Lecture(LocalDateTime lectureTime, LectureStatus lectureStatus, User user) {
+        this.lectureTime = lectureTime;
+        this.lectureStatus = lectureStatus;
         this.user = user;
     }
 }

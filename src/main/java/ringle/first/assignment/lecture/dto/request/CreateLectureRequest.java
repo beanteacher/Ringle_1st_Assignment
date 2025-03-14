@@ -1,4 +1,4 @@
-package ringle.first.assignment.lecture.dto;
+package ringle.first.assignment.lecture.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

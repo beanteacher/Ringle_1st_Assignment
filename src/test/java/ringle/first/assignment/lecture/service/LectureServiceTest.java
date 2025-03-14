@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import ringle.first.assignment.lecture.dto.CreateLectureRequest;
+import ringle.first.assignment.lecture.dto.request.CreateLectureRequest;
 import ringle.first.assignment.util.exception.CustomException;
 
 import java.time.LocalDateTime;
