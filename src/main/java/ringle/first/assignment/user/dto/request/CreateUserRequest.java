@@ -1,4 +1,4 @@
-package ringle.first.assignment.user.dto;
+package ringle.first.assignment.user.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

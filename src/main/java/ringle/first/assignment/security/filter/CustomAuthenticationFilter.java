@@ -9,7 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import ringle.first.assignment.user.dto.LoginRequest;
+import ringle.first.assignment.user.dto.request.LoginRequest;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import ringle.first.assignment.user.dto.CreateUserRequest;
+import ringle.first.assignment.user.dto.request.CreateUserRequest;
 import ringle.first.assignment.user.entity.UserRole;
 import ringle.first.assignment.util.exception.CustomException;
 

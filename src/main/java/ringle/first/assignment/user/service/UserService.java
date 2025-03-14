@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ringle.first.assignment.user.dto.CreateUserRequest;
+import ringle.first.assignment.user.dto.request.CreateUserRequest;
 import ringle.first.assignment.user.entity.User;
 import ringle.first.assignment.user.repository.UserRepository;
 import ringle.first.assignment.util.exception.CustomException;
