@@ -1,0 +1,48 @@
+server:
+  port: 8089
+  servlet:
+    encoding:
+      charset: UTF-8
+
+spring:
+  application:
+    name: ringle
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: jdbc:log4jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+    driver-class-name: ${DRIVER_CLASS_NAME}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+      naming:
+        # JPA 변수 명명규칙을 카멜 케이스로 설정
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+      hibernate:
+        format_sql: true
+
+# logging setting
+logging:
+  file:
+    path: C:/logs/ringle
+  level:
+    root: info
+    org.springframework.web: info
+    com.zaxxer.hikari: info
+    log4jdbc.log4j2: error
+    jdbc.sqlonly: info
+    jdbc.resultsettable: info
+    jdbc.connection: info
+
+springdoc:
+  packages-to-scan: ringle.first.assignment
+  swagger-ui:
+    path: /swagger
+    tags-sorter: alpha # 태그의 정렬을 이름 순으로 정렬
+    operations-sorter: method # 메소드 순으로 정렬
+    doc-expansion: none # Swagger 카테고리를 모두 접은 상태로 로드

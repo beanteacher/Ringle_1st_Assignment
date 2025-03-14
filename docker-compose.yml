@@ -1,0 +1,22 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: ${MYSQL_DATABASE}
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - springboot-network
+
+volumes:
+  db_data:
+
+networks:
+  springboot-network:
+    driver: bridge
