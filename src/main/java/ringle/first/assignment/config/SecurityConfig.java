@@ -36,15 +36,16 @@ public class SecurityConfig {
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
+                .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> {
                     authorize.requestMatchers(
                                     new AntPathRequestMatcher("/swagger"),
                                     new AntPathRequestMatcher("/swagger-ui/**"),
                                     new AntPathRequestMatcher("/v3/api-docs/**"),
-                                    new AntPathRequestMatcher("/login", "POST"),
+                                    new AntPathRequestMatcher("/api/v1/login", "POST"),
                                     new AntPathRequestMatcher("/api/v1/user", "POST")).permitAll()
-                            .requestMatchers(new AntPathRequestMatcher("**"))
-                            .authenticated(); // 위의 요청 외에는 인증만 필요하다.
+                            .requestMatchers("/api/v1/lecture/tutor/**").hasAnyAuthority("ROLE_TUTOR")
+                            .anyRequest().authenticated(); // 위의 요청 외에는 인증만 필요하다.
                 })
                 /* session 로그인 방식을 사용하지 않음(JWT Token 방식을 사용할 예정) */
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
@@ -59,6 +60,7 @@ public class SecurityConfig {
                     exceptionHandling.authenticationEntryPoint(new JwtAuthenticationEntryPoint());
                 }
         );
+
         return http.build();
     }
 
