@@ -19,7 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userSeq;
+    private long userSeq;
 
     @NotNull
     private String userId;
