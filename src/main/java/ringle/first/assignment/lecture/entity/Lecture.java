@@ -27,7 +27,10 @@ public class Lecture {
     private LocalDateTime lectureTime;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private LectureStatus lectureStatus;
+
+    private int lectureDeadLine;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "userSeq")
@@ -41,10 +44,15 @@ public class Lecture {
     @Column(insertable = false)
     private String lectureModDate;
 
+    public void updateLectureDeadLine(int lectureDeadLine) {
+        this.lectureDeadLine = lectureDeadLine;
+    }
+
     @Builder
-    protected Lecture(LocalDateTime lectureTime, LectureStatus lectureStatus, User user) {
+    protected Lecture(LocalDateTime lectureTime, LectureStatus lectureStatus, User user, int lectureDeadLine) {
         this.lectureTime = lectureTime;
         this.lectureStatus = lectureStatus;
         this.user = user;
+        this.lectureDeadLine = lectureDeadLine;
     }
 }

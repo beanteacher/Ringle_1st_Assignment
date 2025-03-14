@@ -43,6 +43,8 @@ token:
   secret: KGhYf2kzryl25ij9QSXmgd3uqDi21DpKf/Rxb942ay9lWYjE9P0J89haiOvv8UoMQFhPx8cCZlEGX6Zh9pEkIA==
   expiration_time: 43200000
 
+interval: 30
+
 springdoc:
   packages-to-scan: ringle.first.assignment
   swagger-ui:

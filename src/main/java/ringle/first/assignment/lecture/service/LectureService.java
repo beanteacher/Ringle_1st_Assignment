@@ -39,19 +39,22 @@ public class LectureService {
         LocalDateTime endDateTime = request.getLectureEndTime();
         List<LocalDateTime> timeList = new ArrayList<>();
 
-        while(!startDateTime.isAfter(endDateTime)) {
+        while(!startDateTime.plusMinutes(interval).isAfter(endDateTime)) {
             timeList.add(startDateTime);
             startDateTime = startDateTime.plusMinutes(interval);
         }
 
         List<Lecture> lectureList = new ArrayList<>();
-        for(LocalDateTime time : timeList) {
+        for(int i = 0; i < timeList.size(); i++) {
             Lecture lecture = Lecture.builder()
-                    .lectureTime(time)
-                    .lectureStatus(LectureStatus.AVAILABLE)
-                    .user(user)
-                    .build();
-
+                        .lectureTime(timeList.get(i))
+                        .lectureStatus(LectureStatus.AVAILABLE)
+                        .user(user)
+                        .lectureDeadLine(60)
+                        .build();
+            if(i == timeList.size()-1) {
+                lecture.updateLectureDeadLine(30);
+            }
             lectureList.add(lecture);
         }
 
@@ -68,8 +71,7 @@ public class LectureService {
         lectureRepository.deleteById(lectureSeq);
     }
 
-    public ReadLectureResponse readLecture(ReadLectureRequest request) {
-        lectureRepository.findAllByLectureDateAndLectureTime(request);
-        return null;
+    public List<String> readLecture(ReadLectureRequest request) {
+        return lectureRepository.findAllByLectureDateAndLectureTime(request);
     }
 }
