@@ -9,6 +9,8 @@ import ringle.first.assignment.lecture.entity.Lecture;
 import ringle.first.assignment.lecture.repository.LectureRepository;
 import ringle.first.assignment.security.JwtUtil;
 import ringle.first.assignment.user.repository.UserRepository;
+import ringle.first.assignment.util.exception.CustomException;
+import ringle.first.assignment.util.exception.ErrorCodeType;
 
 @Service
 @RequiredArgsConstructor
@@ -28,5 +30,15 @@ public class LectureService {
                 .build();
 
         lectureRepository.save(lecture);
+    }
+
+    @Transactional
+    public void deleteLecture(Long lectureSeq) {
+        User user = JwtUtil.getAuthenticatedUser();
+        Lecture lecture = lectureRepository.findById(lectureSeq).orElseThrow(() -> new CustomException(ErrorCodeType.NOT_EXIST_LECTURE));
+        if(!lecture.getUser().getUserId().equals(user.getUsername())) {
+            throw new CustomException(ErrorCodeType.UNAUTHORIZED_LECTURE);
+        }
+        lectureRepository.deleteById(lectureSeq);
     }
 }

@@ -9,9 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import ringle.first.assignment.lecture.dto.CreateLectureRequest;
-import ringle.first.assignment.user.dto.CreateUserRequest;
-import ringle.first.assignment.user.entity.UserRole;
-import ringle.first.assignment.user.service.UserService;
 import ringle.first.assignment.util.exception.CustomException;
 
 import java.time.LocalDateTime;
@@ -28,9 +25,6 @@ class LectureServiceTest {
     LectureService lectureService;
 
     private static Stream<Arguments> createLectureFailParam() {
-
-
-
         return Stream.of(
                 // 종료시간보다 시작시간이 크거나 같은 경우
                 arguments(LocalDateTime.of(2025, 3, 14, 19, 0), LocalDateTime.of(2025, 3, 14, 18, 30)),
@@ -48,5 +42,22 @@ class LectureServiceTest {
         CustomException e = Assertions.assertThrows(CustomException.class, () -> lectureService.createLecture(request));
         assertThat(e.getMessage()).isEqualTo("시간은 정각 혹은 30분 단위로 설정할 수 있습니다.");
         assertThat(e.getMessage()).isEqualTo("수업종료 시간은 수업시작 시간보다 늦은 시간이어야 합니다.");
+    }
+
+    private static Stream<Arguments> deleteLectureFailParam() {
+        return Stream.of(
+                arguments(1),
+                arguments(2)
+        );
+    }
+
+    @DisplayName("수업 삭제")
+    @ParameterizedTest
+    @MethodSource("deleteLectureFailParam")
+    void deleteUserFailTest(Long lectureSeq) {
+
+        CustomException e = Assertions.assertThrows(CustomException.class, () -> lectureService.deleteLecture(lectureSeq));
+        assertThat(e.getMessage()).isEqualTo("존재하지 않는 수업입니다.");
+        assertThat(e.getMessage()).isEqualTo("해당 수업을 삭제할 권한이 없습니다.");
     }
 }
