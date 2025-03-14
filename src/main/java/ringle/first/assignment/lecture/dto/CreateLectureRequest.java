@@ -1,6 +1,7 @@
 package ringle.first.assignment.lecture.dto;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @LectureTimeCheck(startDate = "lectureStartTime", endDate = "lectureEndTime")
 @Getter
 @Setter
+@AllArgsConstructor
 public class CreateLectureRequest {
     // end는 start보다 늦은 시간이어야 한다.
     // start와 end는 모두 00분 혹은 30분 단위이여야만 한다.
