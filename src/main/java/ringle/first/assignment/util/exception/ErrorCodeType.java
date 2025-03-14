@@ -11,6 +11,10 @@ public enum ErrorCodeType {
     LOGIN_ERROR(HttpStatus.BAD_REQUEST, "LOGIN_ERROR_001", "아이디 또는 비밀번호가 일치하지 않아 로그인에 실패하였습니다."),
 
     EXIST_USER(HttpStatus.BAD_REQUEST, "USER_ERROR_001", "이미 존재하는 아이디입니다."),
+    NOT_EXIST_USER(HttpStatus.UNAUTHORIZED, "USER_ERROR_001", "인증에 실패하였습니다."),
+
+    TIME_REQUEST_ERROR_ONE(HttpStatus.BAD_REQUEST, "TIME_REQUEST_ERROR_001", "시간은 정각 혹은 30분 단위로 설정할 수 있습니다."),
+    TIME_REQUEST_ERROR_TWO(HttpStatus.BAD_REQUEST, "TIME_REQUEST_ERROR_002", "수업종료 시간은 수업시작 시간보다 늦은 시간이어야 합니다."),
     ;
     private final HttpStatus httpStatus;
     private final String code;
