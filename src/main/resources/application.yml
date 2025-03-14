@@ -17,7 +17,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         # JPA 변수 명명규칙을 카멜 케이스로 설정
         physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
@@ -38,6 +38,10 @@ logging:
     jdbc.sqlonly: info
     jdbc.resultsettable: info
     jdbc.connection: info
+
+token:
+  secret: KGhYf2kzryl25ij9QSXmgd3uqDi21DpKf/Rxb942ay9lWYjE9P0J89haiOvv8UoMQFhPx8cCZlEGX6Zh9pEkIA==
+  expiration_time: 43200000
 
 springdoc:
   packages-to-scan: ringle.first.assignment
