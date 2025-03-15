@@ -1,23 +1,9 @@
 # 링글 1차 코딩 과제 : 수강 신청 API
 ## 💻 실행 방법
 1. .env 파일 생성
+
 2. .env 파일 값 기입
-<br>
-예시)
-<br>
-   MYSQL_ROOT_PASSWORD=root
-<br>
-   MYSQL_DATABASE=ringle
-<br>
-   MYSQL_USER=ringle
-<br>
-   MYSQL_PASSWORD=1234
-<br>
-   MYSQL_HOST=localhost
-<br>
-   MYSQL_PORT=3306
-<br>
-   DRIVER_CLASS_NAME=net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+![img_14.png](img_14.png)
 
 3. Docker Desktop 실행
 
