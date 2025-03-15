@@ -35,7 +35,7 @@ public class Schedule {
     @Enumerated(EnumType.STRING)
     private ScheduleStatus scheduleStatus; // 수업의 상태
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "lectureSeq")
     private Lecture lecture;
 
