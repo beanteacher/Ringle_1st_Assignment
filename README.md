@@ -55,7 +55,7 @@ GlobalExceptionHandler에서 CustomException 발생 시 ErrorCodeType에 맞는 
 1. localhost:8089/swagger URL을 입력하여 스웨거 API 테스트를 할 수 있는 페이지 입장
 ![img_10.png](img_10.png)
 
-2. 로그인은 따로 엔드포인트가 구현되어 있지 않아 스웨거에 존재하지 않습니다. -> 포스트맨을 통해 로그인하여 Token 값을 복사한 뒤 Authorize 버튼 클릭 후
+2. 로그인은 따로 엔드포인트가 구현되어 있지 않고 필터에 의해 엔드포인트에 도달하면 호출되는 방식으로 구현되어 있어 스웨거에 존재하지 않습니다. -> 포스트맨을 통해 로그인하여 Token 값을 복사한 뒤 Authorize 버튼 클릭 후
 ![img_11.png](img_11.png)
 아래와 같이 토큰 값 전체 붙여넣기
 ![img_12.png](img_12.png)

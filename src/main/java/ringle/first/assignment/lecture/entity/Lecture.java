@@ -38,11 +38,11 @@ public class Lecture {
 
     @CreatedDate
     @Column(updatable = false)
-    private String lectureRegDate;
+    private LocalDateTime lectureRegDate;
 
     @LastModifiedDate
     @Column(insertable = false)
-    private String lectureModDate;
+    private LocalDateTime lectureModDate;
 
     public void updateLectureDeadLine(int lectureDeadLine) {
         this.lectureDeadLine = lectureDeadLine;

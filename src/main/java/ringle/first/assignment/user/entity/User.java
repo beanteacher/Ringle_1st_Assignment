@@ -11,6 +11,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "tbl_user")
 @Getter
@@ -31,10 +33,10 @@ public class User {
     private UserRole userRole;
 
     @CreatedDate @Column(updatable = false)
-    private String userRegDate;
+    private LocalDateTime userRegDate;
 
     @LastModifiedDate @Column(insertable = false)
-    private String userModDate;
+    private LocalDateTime userModDate;
 
     @Builder
     protected User(String userId, UserRole userRole) {

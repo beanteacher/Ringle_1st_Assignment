@@ -45,11 +45,11 @@ public class Schedule {
 
     @CreatedDate
     @Column(updatable = false)
-    private String scheduleRegDate;
+    private LocalDateTime scheduleRegDate;
 
     @LastModifiedDate
     @Column(insertable = false)
-    private String scheduleModDate;
+    private LocalDateTime scheduleModDate;
 
     @Builder
     protected Schedule(LocalDateTime scheduleStartTime, int scheduleTime, User user, Lecture lecture) {
