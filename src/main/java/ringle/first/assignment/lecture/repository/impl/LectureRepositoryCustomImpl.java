@@ -11,7 +11,10 @@ import ringle.first.assignment.lecture.dto.LectureTime;
 import ringle.first.assignment.lecture.dto.request.ReadLectureRequest;
 import ringle.first.assignment.lecture.dto.request.ReadTeachTutorUserRequest;
 import ringle.first.assignment.lecture.dto.response.ReadTeachTutorUserResponse;
+import ringle.first.assignment.lecture.entity.Lecture;
+import ringle.first.assignment.lecture.entity.LectureStatus;
 import ringle.first.assignment.lecture.repository.LectureRepositoryCustom;
+import ringle.first.assignment.schedule.dto.request.CreateScheduleRequest;
 import ringle.first.assignment.user.entity.UserRole;
 
 import java.util.List;
@@ -55,6 +58,19 @@ public class LectureRepositoryCustomImpl implements LectureRepositoryCustom {
                         lecture.lectureTime.eq(request.getRequestLectureTimeslot()),
                         lectureTimeEq(request.getLectureTime()))
                 .fetch();
+    }
+
+    @Override
+    public Lecture findByTimeSlotAndLectureDeadLineAndTutor(CreateScheduleRequest request) {
+        return queryFactory
+                .selectFrom(lecture)
+                .join(lecture.user, user)
+                .where(user.userRole.eq(UserRole.ROLE_TUTOR),
+                        lecture.lectureSeq.eq(request.getLectureSeq()),
+                        lecture.lectureTime.eq(request.getScheduleStartTime()),
+                        lectureTimeEq(request.getScheduleTime()),
+                        lecture.lectureStatus.eq(LectureStatus.AVAILABLE))
+                .fetchOne();
     }
 
     private BooleanExpression lectureTimeEq(LectureTime lectureTime) {

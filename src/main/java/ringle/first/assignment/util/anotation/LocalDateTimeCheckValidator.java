@@ -11,12 +11,12 @@ import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 
 @Slf4j
-public class LectureTimeCheckValidator implements ConstraintValidator<LectureTimeCheck, Object> {
+public class LocalDateTimeCheckValidator implements ConstraintValidator<LocalDateTimeCheck, Object> {
     private String startDate;
     private String endDate;
 
     @Override
-    public void initialize(LectureTimeCheck constraintAnnotation) {
+    public void initialize(LocalDateTimeCheck constraintAnnotation) {
         startDate = constraintAnnotation.startDate();
         endDate = constraintAnnotation.endDate();
     }

@@ -10,8 +10,8 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = LectureTimeCheckValidator.class)
-public @interface LectureTimeCheck {
+@Constraint(validatedBy = LocalDateTimeCheckValidator.class)
+public @interface LocalDateTimeCheck {
     String message() default "";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

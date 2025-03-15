@@ -5,11 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
-import ringle.first.assignment.util.anotation.LectureTimeCheck;
+import ringle.first.assignment.util.anotation.LocalDateTimeCheck;
 
 import java.time.LocalDateTime;
 
-@LectureTimeCheck(startDate = "lectureStartTime", endDate = "lectureEndTime")
+@LocalDateTimeCheck(startDate = "lectureStartTime", endDate = "lectureEndTime")
 @Getter
 @Setter
 @AllArgsConstructor

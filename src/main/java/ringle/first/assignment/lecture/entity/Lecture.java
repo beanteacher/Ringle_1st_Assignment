@@ -48,6 +48,10 @@ public class Lecture {
         this.lectureDeadLine = lectureDeadLine;
     }
 
+    public void updateLectureStatus(LectureStatus lectureStatus) {
+        this.lectureStatus = lectureStatus;
+    }
+
     @Builder
     protected Lecture(LocalDateTime lectureTime, LectureStatus lectureStatus, User user, int lectureDeadLine) {
         this.lectureTime = lectureTime;
