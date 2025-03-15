@@ -6,11 +6,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ringle.first.assignment.lecture.dto.request.CreateLectureRequest;
 import ringle.first.assignment.lecture.dto.request.ReadLectureRequest;
-import ringle.first.assignment.lecture.dto.response.ReadLectureResponse;
 import ringle.first.assignment.lecture.entity.Lecture;
 import ringle.first.assignment.lecture.entity.LectureStatus;
 import ringle.first.assignment.lecture.repository.LectureRepository;
 import ringle.first.assignment.security.JwtUtil;
+import ringle.first.assignment.lecture.dto.request.ReadTeachTutorUserRequest;
+import ringle.first.assignment.lecture.dto.response.ReadTeachTutorUserResponse;
 import ringle.first.assignment.user.entity.User;
 import ringle.first.assignment.user.repository.UserRepository;
 import ringle.first.assignment.util.exception.CustomException;
@@ -73,5 +74,9 @@ public class LectureService {
 
     public List<String> readLecture(ReadLectureRequest request) {
         return lectureRepository.findAllByLectureDateAndLectureTime(request);
+    }
+
+    public List<ReadTeachTutorUserResponse> readTeachTutorUser(ReadTeachTutorUserRequest request) {
+        return lectureRepository.findAllByTimeSlotAndLectureDeadLine(request);
     }
 }

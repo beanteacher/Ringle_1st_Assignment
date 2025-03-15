@@ -1,6 +1,7 @@
 package ringle.first.assignment.lecture.repository.impl;
 
 import com.querydsl.core.types.ConstantImpl;
+import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -8,11 +9,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import ringle.first.assignment.lecture.dto.LectureTime;
 import ringle.first.assignment.lecture.dto.request.ReadLectureRequest;
+import ringle.first.assignment.lecture.dto.request.ReadTeachTutorUserRequest;
+import ringle.first.assignment.lecture.dto.response.ReadTeachTutorUserResponse;
 import ringle.first.assignment.lecture.repository.LectureRepositoryCustom;
+import ringle.first.assignment.user.entity.UserRole;
 
 import java.util.List;
 
 import static ringle.first.assignment.lecture.entity.QLecture.lecture;
+import static ringle.first.assignment.user.entity.QUser.user;
 
 @Repository
 @RequiredArgsConstructor
@@ -37,7 +42,22 @@ public class LectureRepositoryCustomImpl implements LectureRepositoryCustom {
 
     }
 
+    @Override
+    public List<ReadTeachTutorUserResponse> findAllByTimeSlotAndLectureDeadLine(ReadTeachTutorUserRequest request) {
+        return queryFactory
+                .select(Projections.constructor(ReadTeachTutorUserResponse.class,
+                        user.userSeq,
+                        lecture.lectureTime,
+                        lecture.lectureStatus))
+                .from(lecture)
+                .join(lecture.user, user)
+                .where(user.userRole.eq(UserRole.ROLE_TUTOR),
+                        lecture.lectureTime.eq(request.getRequestLectureTimeslot()),
+                        lectureTimeEq(request.getLectureTime()))
+                .fetch();
+    }
+
     private BooleanExpression lectureTimeEq(LectureTime lectureTime) {
-        return lectureTime == LectureTime.SIXTY ? null : lecture.lectureDeadLine.eq(30);
+        return lectureTime == LectureTime.SIXTY ?  lecture.lectureDeadLine.eq(60) : null;
     }
 }
