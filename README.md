@@ -3,6 +3,7 @@
 1. .env 파일 생성
 
 2. .env 파일 값 기입
+
 ![img_14.png](img_14.png)
 
 3. Docker Desktop 실행
