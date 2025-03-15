@@ -17,9 +17,13 @@
    MYSQL_PORT=3306
 <br>
    DRIVER_CLASS_NAME=net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+<br>
 3. Docker Desktop 실행
+<br>
 4. docker-compose.yml의 상위 폴더에서 docker compose up --build 명령어 실행
+<br>
 5. SpringBoot Project 실행
+<br>
 ## 📰 설계 배경
 1. ERD : https://www.erdcloud.com/d/GXn4ewWTTXd7icWHj
 ## 📍 코드 설명
@@ -39,6 +43,7 @@ GlobalExceptionHandler에서 CustomException 발생 시 ErrorCodeType에 맞는 
 ![img_3.png](img_3.png)
 <br>
 코드 실패 시와 성공 시의 테스트 코드 작성
+<br>
 ## ⚠️ 구현된 코드 테스트 방법
 ### 포스트맨을 이용한 테스트
 1. 회원 가입 진행 (USER_ROLE은 'ROLE_TUTOR', 'ROLE_STUDENT')를 사용할 수 있다.
