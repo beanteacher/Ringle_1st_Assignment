@@ -18,9 +18,10 @@ public enum ErrorCodeType {
 
     NOT_EXIST_LECTURE(HttpStatus.BAD_REQUEST, "LECTURE_ERROR_001", "존재하지 않는 수업입니다."),
     UNAUTHORIZED_LECTURE(HttpStatus.UNAUTHORIZED, "LECTURE_ERROR_002", "해당 수업을 삭제할 권한이 없습니다."),
+    POSSIBLE_LECTURE(HttpStatus.BAD_REQUEST, "LECTURE_ERROR_003", "해당 수업은 타인에 의해 이미 예약된 수업이거나 예약할 수 없는 수업입니다."),
     ;
+
     private final HttpStatus httpStatus;
     private final String code;
     private final String message;
-
 }
