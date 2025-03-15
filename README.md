@@ -2,7 +2,8 @@
 ## 💻 실행 방법
 1. .env 파일 생성
 2. .env 파일 값 기입
-<br> 예시)
+<br>
+예시)
 <br>
    MYSQL_ROOT_PASSWORD=root
 <br>
@@ -17,8 +18,11 @@
    MYSQL_PORT=3306
 <br>
    DRIVER_CLASS_NAME=net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+
 3. Docker Desktop 실행
+
 4. docker-compose.yml의 상위 폴더에서 docker compose up --build 명령어 실행
+
 5. SpringBoot Project 실행
 
 
